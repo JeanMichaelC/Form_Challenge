@@ -5,7 +5,7 @@ I assume you want to see what I've done so far. To view the project just follow 
 ### 1º Step: Clone the GitHub repo
 Choose the folder you like the most and type into the terminal: 
 ```
-git clone https://github.com/JeanMichaelC/etecture.git
+git clone https://github.com/JeanMichaelC/Form_Challenge.git
 ```
 ### 2º Step: Install your dependencies
 Make sure that npm has installed all the required packages for the project:

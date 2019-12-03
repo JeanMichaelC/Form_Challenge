@@ -42,6 +42,8 @@ export class Form extends React.Component<ITaskFormProps, IFormProps> {
 
         if((nameError && emailError && passwordError) === '') {
             formIsValid = true;
+        } else {
+            formIsValid = false;
         }
 
         if(formIsValid) {
@@ -50,8 +52,10 @@ export class Form extends React.Component<ITaskFormProps, IFormProps> {
 
             // Aquí tengo que pasarle una función a los componentes. 
             this.resetState();
+
+            alert('The form was sent successfully!');
         } else {
-            console.log('El formulario NO es válido!!!!');
+            alert('The form is not valid!');
         }
         
         
