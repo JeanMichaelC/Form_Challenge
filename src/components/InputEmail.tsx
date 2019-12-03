@@ -29,16 +29,67 @@ export class InputEmail extends React.Component<IInputProps, IInputEmailState> {
     }
 
     validateEmail = () => {
-        let emailError = ''; 
-        
-        if(this.state.email !== undefined && this.state.email.indexOf('@') === -1) {
-            emailError = 'The email must have a "@" symbol';
+        let emailError = '';
+        let charAtIndex: number = 
+        this.state.email!.indexOf('@');
+        let charDotIndex: number = this.state.email!.indexOf('.');
+
+        const contextOfAtCharIsNotValid = () => {
+            if(this.state.email!.charAt(charAtIndex + 1) === '.' || this.state.email!.charAt(charAtIndex + 1) === ' ' || this.state.email!.charAt(charAtIndex + 1) === '' || this.state.email!.charAt(charAtIndex - 1) === '.' || this.state.email!.charAt(charAtIndex - 1) === ' ' || this.state.email!.charAt(charAtIndex - 1) === '') {
+                return true;
+            }
+            return false;
+        } 
+        const dotHasNoDomainExtension = () => {
+            if(this.state.email!.charAt(charDotIndex + 1) === '') {
+                return true;
+            }
+            return false;
         }
-        if(this.state.email !== undefined && this.state.email.indexOf(' ') !== -1) {
-            emailError = 'Don\'t use spaces in the email';
+        const thereIsNoDot = () => {
+            if(this.state.email!.indexOf('.') === -1) {
+                return true;
+            }
+            return false;
+        }
+        const thereIsNoAtChar = () => {
+            if(this.state.email!.indexOf('@') === -1) {
+                return true;
+            }
+            return false;
+        }
+        const thereIsASpace = () => {
+            if(this.state.email!.indexOf(' ') !== -1) {
+                return true;
+            }
+            return false;
+        }
+        const fieldIsEmpty = () => {
+            if(this.state.email! == '') {
+                return true;
+            }
+            return false;
         }
         
-        if(this.state.email !== undefined && this.state.email == '') {
+        
+        if(thereIsNoDot()) {
+            emailError = 'The email must have a valid format';
+        }
+        if(contextOfAtCharIsNotValid()) {
+            emailError = 'The email must have a valid format';
+        }
+        if(dotHasNoDomainExtension()) {
+            emailError = 'Enter a domain extension';
+        }
+        if(thereIsNoAtChar()) {
+            emailError = 'The email must have an " @"';
+        }
+        if(thereIsASpace()) {
+            emailError = 'The email cannot have spaces';
+        }
+
+
+        if(fieldIsEmpty()) {
             emailError = '';
         }
         this.setState({

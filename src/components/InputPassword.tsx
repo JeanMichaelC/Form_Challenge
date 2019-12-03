@@ -37,19 +37,45 @@ export class InputPassword extends React.Component<IInputProps, IInputPasswordSt
         let strongRegEx = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})");
         
 
-        if(this.state.password !== undefined && !this.state.password.match(weakRegEx)) {
+        const passwordIsWeak = () => {
+            if(!this.state.password!.match(weakRegEx)) {
+                return true;
+            }
+            return false;
+        }
+        const passwordIsNotWeak = () => {
+            if(!this.state.password!.match(strongRegEx)) {
+                return true;
+            }
+            return false;
+        }
+        const passwordIsAlmostStrong = () => {
+            if(!this.state.password!.match(mediumRegEx)) {
+                return true;
+            }
+            return false;
+        }
+        const fieldIsEmpty = () => {
+            if(this.state.password! == '') {
+                return true;
+            }
+            return false;
+        }
+
+
+        if(passwordIsWeak()) {
             passwordError = 'Enter at least 8 chars'
         } else {
-            if(this.state.password !== undefined && !this.state.password.match(strongRegEx)) {
+            if(passwordIsNotWeak()) {
                 passwordTip = 'But with an uppercaseChar the best!'
             } 
-            if(this.state.password !== undefined && !this.state.password.match(mediumRegEx)) {
+            if(passwordIsAlmostStrong()) {
                 passwordTip = 'If you add one number or lower letter better!'
             }
         }
 
         
-        if(this.state.password !== undefined && this.state.password == '') {
+        if(fieldIsEmpty()) {
             passwordError = '';
         }
         this.setState({

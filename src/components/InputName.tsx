@@ -30,12 +30,37 @@ export class InputName extends React.Component<IInputProps, IInputNameState> {
 
     validateName = () => {
         let nameError = '';
+
+
+        const isTooShort = () => {
+            if(this.state.name!.length < 8) {
+                return true;
+            }
+            return false;
+        }
+        const thereIsASpace = () => {
+            if(this.state.name!.indexOf(' ') !== -1) {
+                return true;
+            }
+            return false;
+        }
+        const fieldIsEmpty = () => {
+            if(this.state.name! == '') {
+                return true;
+            }
+            return false;
+        }
+
         
-        if(this.state.name !== undefined && this.state.name.length < 8) {
+        if(isTooShort()) {
             nameError = 'Enter at least 8 characters';
         }
+        if(thereIsASpace()) {
+            nameError = 'The user name cannot have spaces';
+        }
         
-        if(this.state.name !== undefined && this.state.name == '') {
+
+        if(fieldIsEmpty()) {
             nameError = '';
         }
         this.setState({
