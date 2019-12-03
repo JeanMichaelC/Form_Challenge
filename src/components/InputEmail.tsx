@@ -118,7 +118,7 @@ export class InputEmail extends React.Component<IInputProps, IInputEmailState> {
 
 interface IInputProps {
     handleInputChange: (inputName: any, inputValue: any,inputErrorName: any, inputErrorValue: any) => void;
-    clearedState: IFormProps;
+    // clearedState: IFormProps;
 }
 
 interface IInputEmailState {

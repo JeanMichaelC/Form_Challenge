@@ -86,13 +86,13 @@ export class Form extends React.Component<ITaskFormProps, IFormProps> {
 
                 <form onSubmit={e => this.handleSubmit(e)} className="form" action="">
            
-                    <InputName clearedState={this.state} handleInputChange={this.handleInputChange.bind(this)} />
+                    <InputName handleInputChange={this.handleInputChange.bind(this)} />
 
                   
-                    <InputEmail clearedState={this.state} handleInputChange={this.handleInputChange.bind(this)} />
+                    <InputEmail handleInputChange={this.handleInputChange.bind(this)} />
 
                
-                    <InputPassword clearedState={this.state} handleInputChange={this.handleInputChange.bind(this)} />
+                    <InputPassword handleInputChange={this.handleInputChange.bind(this)} />
                     
                     <input className="cta" type="submit" value="Sign In"/>
                 </form>

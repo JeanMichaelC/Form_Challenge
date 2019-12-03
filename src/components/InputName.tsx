@@ -89,7 +89,7 @@ export class InputName extends React.Component<IInputProps, IInputNameState> {
 
 interface IInputProps {
     handleInputChange: (inputName: any, inputValue: any,inputErrorName: any, inputErrorValue: any) => void;
-    clearedState: IFormProps;
+    // clearedState: IFormProps;
 }
 
 interface IInputNameState {

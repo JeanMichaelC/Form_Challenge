@@ -110,7 +110,7 @@ export class InputPassword extends React.Component<IInputProps, IInputPasswordSt
 
 interface IInputProps {
     handleInputChange: (inputName: any, inputValue: any,inputErrorName: any, inputErrorValue: any) => void;
-    clearedState: IFormProps;
+    // clearedState: IFormProps;
 }
 
 interface IInputPasswordState {
