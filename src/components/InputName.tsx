@@ -1,5 +1,5 @@
 import * as React from 'react';
-
+import {IFormProps} from '../interfaces/IFormProps';
 
 export class InputName extends React.Component<IInputProps, IInputNameState> {
 
@@ -68,6 +68,10 @@ export class InputName extends React.Component<IInputProps, IInputNameState> {
         });
     }
 
+    componentWillReceiveProps(props: any) {
+        this.setState(props.clearedState)
+    }
+
     render() {
         return(
             <div className={this.state.nameError ? "group group-error" : "group"}>
@@ -85,6 +89,7 @@ export class InputName extends React.Component<IInputProps, IInputNameState> {
 
 interface IInputProps {
     handleInputChange: (inputName: any, inputValue: any,inputErrorName: any, inputErrorValue: any) => void;
+    clearedState: IFormProps;
 }
 
 interface IInputNameState {

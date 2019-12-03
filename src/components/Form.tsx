@@ -6,9 +6,6 @@ import { InputPassword } from './InputPassword';
 
 import {IFormProps} from '../interfaces/IFormProps';
 
-// import '../styles/inputStyles.css';
-// import '../styles/formStyles.css';
-
 
 export class Form extends React.Component<ITaskFormProps, IFormProps> {
 
@@ -21,14 +18,17 @@ export class Form extends React.Component<ITaskFormProps, IFormProps> {
             email: '',
             emailError: '',
             password: '',
-            passwordError: ''
+            passwordError: '',
+            passwordTip: ''
         }
     }
+
+     
 
     handleSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
 
-        let newTask: IFormProps = {
+        let newState: IFormProps = {
             name: this.state.name,
             email: this.state.email,
             password: this.state.password
@@ -46,11 +46,27 @@ export class Form extends React.Component<ITaskFormProps, IFormProps> {
 
         if(formIsValid) {
             console.log('El formulario es válido');
+            this.props.updateFromFormState(newState);
+
+            // Aquí tengo que pasarle una función a los componentes. 
+            this.resetState();
         } else {
             console.log('El formulario NO es válido!!!!');
         }
         
-        this.props.updateFromFormState(newTask);
+        
+    }
+
+    resetState() {
+        this.setState({
+            name: '',
+            nameError: '',
+            email: '',
+            emailError: '',
+            password: '',
+            passwordError: '',
+            passwordTip: ''
+        });
     }
 
     handleInputChange(inputName: any, inputValue: any, inputErrorName: any, inputErrorValue: any) {
@@ -66,13 +82,13 @@ export class Form extends React.Component<ITaskFormProps, IFormProps> {
 
                 <form onSubmit={e => this.handleSubmit(e)} className="form" action="">
            
-                    <InputName handleInputChange={this.handleInputChange.bind(this)} />
+                    <InputName clearedState={this.state} handleInputChange={this.handleInputChange.bind(this)} />
 
                   
-                    <InputEmail handleInputChange={this.handleInputChange.bind(this)} />
+                    <InputEmail clearedState={this.state} handleInputChange={this.handleInputChange.bind(this)} />
 
                
-                    <InputPassword handleInputChange={this.handleInputChange.bind(this)} />
+                    <InputPassword clearedState={this.state} handleInputChange={this.handleInputChange.bind(this)} />
                     
                     <input className="cta" type="submit" value="Sign In"/>
                 </form>
@@ -83,5 +99,5 @@ export class Form extends React.Component<ITaskFormProps, IFormProps> {
 
 
 interface ITaskFormProps {
-    updateFromFormState: (task: IFormProps) => void;
+    updateFromFormState: (newState: IFormProps) => void;
 }

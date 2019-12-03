@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {IFormProps} from '../interfaces/IFormProps';
 
 
 export class InputEmail extends React.Component<IInputProps, IInputEmailState> {
@@ -8,7 +9,7 @@ export class InputEmail extends React.Component<IInputProps, IInputEmailState> {
 
         this.state = {
             email: '',
-            emailError: ''            
+            emailError: ''      
         }
     }
 
@@ -97,6 +98,10 @@ export class InputEmail extends React.Component<IInputProps, IInputEmailState> {
         });
     }
 
+    componentWillReceiveProps(props: any) {
+        this.setState(props.clearedState)
+    }
+
     render() {
         return(
             <div className={this.state.emailError ? "group group-error" : "group"}>
@@ -113,6 +118,7 @@ export class InputEmail extends React.Component<IInputProps, IInputEmailState> {
 
 interface IInputProps {
     handleInputChange: (inputName: any, inputValue: any,inputErrorName: any, inputErrorValue: any) => void;
+    clearedState: IFormProps;
 }
 
 interface IInputEmailState {

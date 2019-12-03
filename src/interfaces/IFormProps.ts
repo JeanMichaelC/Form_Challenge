@@ -5,4 +5,5 @@ export interface IFormProps {
     emailError?: string;
     password?: string;
     passwordError?: string;
+    passwordTip?: string;
 }

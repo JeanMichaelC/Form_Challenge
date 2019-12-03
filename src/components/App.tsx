@@ -15,11 +15,8 @@ export class App extends React.Component<AppProps, IFormProps> {
 
         this.state = {
             name: '',
-            nameError: '',
             email: '',
-            emailError: '',
             password: '',
-            passwordError: ''
         };
     }
 

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {IFormProps} from '../interfaces/IFormProps';
 
 
 export class InputPassword extends React.Component<IInputProps, IInputPasswordState> {
@@ -64,13 +65,15 @@ export class InputPassword extends React.Component<IInputProps, IInputPasswordSt
 
 
         if(passwordIsWeak()) {
-            passwordError = 'Enter at least 8 chars'
+            passwordError = 'Enter at least 8 chars';
         } else {
             if(passwordIsNotWeak()) {
-                passwordTip = 'But with an uppercaseChar the best!'
+                passwordTip = 'But with an uppercaseChar the best!';
+                passwordError = '';
             } 
             if(passwordIsAlmostStrong()) {
-                passwordTip = 'If you add one number or lower letter better!'
+                passwordTip = 'If you add one number or lower letter better!';
+                passwordError = '';
             }
         }
 
@@ -82,6 +85,10 @@ export class InputPassword extends React.Component<IInputProps, IInputPasswordSt
             passwordError: passwordError,
             passwordTip: passwordTip
         });
+    }
+
+    componentWillReceiveProps(props: any) {
+        this.setState(props.clearedState)
     }
 
     render() {
@@ -103,6 +110,7 @@ export class InputPassword extends React.Component<IInputProps, IInputPasswordSt
 
 interface IInputProps {
     handleInputChange: (inputName: any, inputValue: any,inputErrorName: any, inputErrorValue: any) => void;
+    clearedState: IFormProps;
 }
 
 interface IInputPasswordState {
