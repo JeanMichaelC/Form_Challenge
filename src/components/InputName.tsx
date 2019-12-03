@@ -104,7 +104,7 @@ export class InputName extends React.Component<IInputProps, IInputNameState> {
 
 
 interface IInputProps {
-    handleInputChange: (inputName: any, inputValue: any,inputErrorName: any, inputErrorValue: any) => void;
+    handleInputChange: (inputName: any, inputValue: any,inputErrorName: any, inputErrorValue: any, inputErrorTipName?: any, inputErrorTipValue?: any) => void;
     parentCurrentState: IFormProps;
 }
 

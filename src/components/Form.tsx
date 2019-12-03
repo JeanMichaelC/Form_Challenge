@@ -74,10 +74,11 @@ export class Form extends React.Component<ITaskFormProps, IFormProps> {
         
     }
 
-    handleInputChange(inputName: any, inputValue: any, inputErrorName: any, inputErrorValue: any) {
+    handleInputChange(inputName: any, inputValue: any, inputErrorName: any, inputErrorValue: any, inputErrorTipName: any, inputErrorTipValue: any) {
         this.setState({
             [inputName]: inputValue,
-            [inputErrorName]: inputErrorValue
+            [inputErrorName]: inputErrorValue,
+            [inputErrorTipName]: inputErrorTipValue
         });
     }
 

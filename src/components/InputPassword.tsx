@@ -17,9 +17,13 @@ export class InputPassword extends React.Component<IInputProps, IInputPasswordSt
     handleChange(e: React.ChangeEvent<HTMLInputElement|HTMLTextAreaElement >) {
         let {name, value} = e.target;
         let errorName = 'passwordError';
-        let errorValue: string = '';   
+        let errorValue: string = '';
+        let tipName = 'passwordTip';
+        let tipValue: string = '';
         const setErrorValue = () => {
-            errorValue = this.validatePassword(errorValue);
+            let tipAndError = this.validatePassword(errorValue);
+            errorValue = tipAndError.error;
+            tipValue = tipAndError.tip;
         }
 
 
@@ -31,7 +35,7 @@ export class InputPassword extends React.Component<IInputProps, IInputPasswordSt
         
         
         setTimeout(() => {
-            this.props.handleInputChange(name, value, errorName, errorValue);       
+            this.props.handleInputChange(name, value, errorName, errorValue, tipName, tipValue);       
         },50);       
     }
 
@@ -89,7 +93,13 @@ export class InputPassword extends React.Component<IInputProps, IInputPasswordSt
             passwordError: passwordError,
             passwordTip: passwordTip
         });
-        return passwordError;
+
+        let tipAndError: any = {
+            error: passwordError,
+            tip: passwordTip
+        }; 
+
+        return tipAndError;
     }
 
     componentWillReceiveProps(props: any) {
@@ -114,7 +124,7 @@ export class InputPassword extends React.Component<IInputProps, IInputPasswordSt
 
 
 interface IInputProps {
-    handleInputChange: (inputName: any, inputValue: any,inputErrorName: any, inputErrorValue: any) => void;
+    handleInputChange: (inputName: any, inputValue: any,inputErrorName: any, inputErrorValue: any, inputErrorTipName?: any, inputErrorTipValue?: any) => void;
     parentCurrentState: IFormProps;
 }
 
