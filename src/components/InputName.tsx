@@ -85,7 +85,7 @@ export class InputName extends React.Component<IInputProps, IInputNameState> {
     }
 
     componentWillReceiveProps(props: any) {
-        this.setState(props.clearedState)
+        this.setState(props.parentCurrentState)
     }
 
     render() {

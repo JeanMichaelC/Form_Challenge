@@ -104,7 +104,7 @@ export class InputEmail extends React.Component<IInputProps, IInputEmailState> {
     }
 
     componentWillReceiveProps(props: any) {
-        this.setState(props.clearedState)
+        this.setState(props.parentCurrentState)
     }
 
     render() {

@@ -37,18 +37,21 @@ export class Form extends React.Component<ITaskFormProps, IFormProps> {
         let emailError = this.state.emailError;
         let passwordError = this.state.passwordError;
         
-
-        let formIsValid: boolean = false;
-
-        if((nameError && emailError && passwordError) === '') {
-            formIsValid = true;
-        } else {
-            formIsValid = false;
+        // let formIsValid: boolean = false;
+        const thereIsNoError = () => {
+            if (this.state.nameError === '' && this.state.emailError === '' && this.state.passwordError === '') {
+                return true;
+            }
+            return false;
         }
+        // if((nameError && emailError && passwordError) === '') {
+        //     formIsValid = true;
+        // } else {
+        //     formIsValid = false;
+        // }
 
-        if(formIsValid) {
+        if(thereIsNoError()) {
             console.log('El formulario es válido');
-            this.props.updateFromFormState(newState);
 
             // Aquí tengo que pasarle una función a los componentes. 
             this.setState({
@@ -59,6 +62,8 @@ export class Form extends React.Component<ITaskFormProps, IFormProps> {
                 password: '',
                 passwordError: '',
                 passwordTip: ''
+            }, () => {
+                this.props.updateFromFormState(newState);
             });
 
             alert('The form was sent successfully!');

@@ -93,7 +93,7 @@ export class InputPassword extends React.Component<IInputProps, IInputPasswordSt
     }
 
     componentWillReceiveProps(props: any) {
-        this.setState(props.clearedState)
+        this.setState(props.parentCurrentState)
     }
 
     render() {
