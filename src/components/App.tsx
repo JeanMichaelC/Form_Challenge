@@ -28,7 +28,7 @@ export class App extends React.Component<AppProps, IFormProps> {
         return(
             <div>
                 <nav className="nav">
-                    <p className="logo"> {this.props.fileName}</p>
+                    <a href="/" className="logo"> {this.props.fileName}</a>
                     
                 </nav>
 

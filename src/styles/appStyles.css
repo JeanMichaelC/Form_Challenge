@@ -12,6 +12,13 @@ body {
     height: 100px;
 }
 
+.nav a {
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 24px;
+    font-family: 'Sulphur Point', sans-serif;
+}
+
 .logo {
     margin: 0 40px;
     color: #eee;
@@ -42,6 +49,7 @@ body {
 
 .card-title span {
     font-weight: 450;
+    font-family: 'Sulphur Point', sans-serif;
 }
 
 .card-title .coffee-title {
