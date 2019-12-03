@@ -12,26 +12,41 @@ export class InputName extends React.Component<IInputProps, IInputNameState> {
         }
     }
 
+    // handleChange(e: React.ChangeEvent<HTMLInputElement|HTMLTextAreaElement >) {
+    //     let {name, value} = e.target;
+    //     let errorName = 'nameError';
+    //     let errorValue = this.state.nameError;
+
+
+    //     this.setState({
+    //         [name]: value,
+    //     };
+
+    //     this.props.handleInputChange(name, value, errorName, errorValue);       
+    // }
     handleChange(e: React.ChangeEvent<HTMLInputElement|HTMLTextAreaElement >) {
         let {name, value} = e.target;
         let errorName = 'nameError';
-        let errorValue = this.state.nameError;
+        let errorValue: string = '';   
+        const setErrorValue = () => {
+            errorValue = this.validateName(errorValue);
+        }
 
 
         this.setState({
-            [name]: value,
-
+            [name]: value    
         }, () => {
-            this.validateName();
+            setErrorValue();
         });
-
-        this.props.handleInputChange(name, value, errorName, errorValue);       
+        
+        
+        setTimeout(() => {
+            this.props.handleInputChange(name, value, errorName, errorValue);       
+        },50);
     }
 
-    validateName = () => {
-        let nameError = '';
-
-
+    validateName = (nameError: string) => {
+        
         const isTooShort = () => {
             if(this.state.name!.length < 8) {
                 return true;
@@ -66,6 +81,7 @@ export class InputName extends React.Component<IInputProps, IInputNameState> {
         this.setState({
             nameError: nameError
         });
+        return nameError;
     }
 
     componentWillReceiveProps(props: any) {
@@ -89,7 +105,7 @@ export class InputName extends React.Component<IInputProps, IInputNameState> {
 
 interface IInputProps {
     handleInputChange: (inputName: any, inputValue: any,inputErrorName: any, inputErrorValue: any) => void;
-    // clearedState: IFormProps;
+    parentCurrentState: IFormProps;
 }
 
 interface IInputNameState {

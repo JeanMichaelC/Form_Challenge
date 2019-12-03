@@ -17,21 +17,25 @@ export class InputPassword extends React.Component<IInputProps, IInputPasswordSt
     handleChange(e: React.ChangeEvent<HTMLInputElement|HTMLTextAreaElement >) {
         let {name, value} = e.target;
         let errorName = 'passwordError';
-        let errorValue = this.state.passwordError;
+        let errorValue: string = '';   
+        const setErrorValue = () => {
+            errorValue = this.validatePassword(errorValue);
+        }
 
 
         this.setState({
-            [name]: value,
-
+            [name]: value    
         }, () => {
-            this.validatePassword();
+            setErrorValue();
         });
-
-        this.props.handleInputChange(name, value, errorName, errorValue);       
+        
+        
+        setTimeout(() => {
+            this.props.handleInputChange(name, value, errorName, errorValue);       
+        },50);       
     }
 
-    validatePassword = () => {
-        let passwordError = '';
+    validatePassword = (passwordError: string) => {
         let passwordTip = '';
         let weakRegEx = new RegExp("^(?=.{8,})");
         let mediumRegEx = new RegExp("^(?=.*[a-z])(?=.*[0-9])(?=.{8,})");
@@ -85,6 +89,7 @@ export class InputPassword extends React.Component<IInputProps, IInputPasswordSt
             passwordError: passwordError,
             passwordTip: passwordTip
         });
+        return passwordError;
     }
 
     componentWillReceiveProps(props: any) {
@@ -110,7 +115,7 @@ export class InputPassword extends React.Component<IInputProps, IInputPasswordSt
 
 interface IInputProps {
     handleInputChange: (inputName: any, inputValue: any,inputErrorName: any, inputErrorValue: any) => void;
-    // clearedState: IFormProps;
+    parentCurrentState: IFormProps;
 }
 
 interface IInputPasswordState {

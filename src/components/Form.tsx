@@ -51,7 +51,15 @@ export class Form extends React.Component<ITaskFormProps, IFormProps> {
             this.props.updateFromFormState(newState);
 
             // Aquí tengo que pasarle una función a los componentes. 
-            this.resetState();
+            this.setState({
+                name: '',
+                nameError: '',
+                email: '',
+                emailError: '',
+                password: '',
+                passwordError: '',
+                passwordTip: ''
+            });
 
             alert('The form was sent successfully!');
         } else {
@@ -59,18 +67,6 @@ export class Form extends React.Component<ITaskFormProps, IFormProps> {
         }
         
         
-    }
-
-    resetState() {
-        this.setState({
-            name: '',
-            nameError: '',
-            email: '',
-            emailError: '',
-            password: '',
-            passwordError: '',
-            passwordTip: ''
-        });
     }
 
     handleInputChange(inputName: any, inputValue: any, inputErrorName: any, inputErrorValue: any) {
@@ -86,13 +82,13 @@ export class Form extends React.Component<ITaskFormProps, IFormProps> {
 
                 <form onSubmit={e => this.handleSubmit(e)} className="form" action="">
            
-                    <InputName handleInputChange={this.handleInputChange.bind(this)} />
+                    <InputName parentCurrentState={this.state} handleInputChange={this.handleInputChange.bind(this)} />
 
                   
-                    <InputEmail handleInputChange={this.handleInputChange.bind(this)} />
+                    <InputEmail parentCurrentState={this.state} handleInputChange={this.handleInputChange.bind(this)} />
 
                
-                    <InputPassword handleInputChange={this.handleInputChange.bind(this)} />
+                    <InputPassword parentCurrentState={this.state} handleInputChange={this.handleInputChange.bind(this)} />
                     
                     <input className="cta" type="submit" value="Sign In"/>
                 </form>

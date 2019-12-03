@@ -16,21 +16,25 @@ export class InputEmail extends React.Component<IInputProps, IInputEmailState> {
     handleChange(e: React.ChangeEvent<HTMLInputElement|HTMLTextAreaElement >) {
         let {name, value} = e.target;
         let errorName = 'emailError';
-        let errorValue = this.state.emailError;
+        let errorValue: string = '';   
+        const setErrorValue = () => {
+            errorValue = this.validateEmail(errorValue);
+        }
 
-        
+
         this.setState({
-            [name]: value,
-
+            [name]: value    
         }, () => {
-            this.validateEmail();
+            setErrorValue();
         });
-
-        this.props.handleInputChange(name, value, errorName, errorValue);       
+        
+        
+        setTimeout(() => {
+            this.props.handleInputChange(name, value, errorName, errorValue);       
+        },50);      
     }
 
-    validateEmail = () => {
-        let emailError = '';
+    validateEmail = (emailError: string) => {
         let charAtIndex: number = 
         this.state.email!.indexOf('@');
         let charDotIndex: number = this.state.email!.indexOf('.');
@@ -96,6 +100,7 @@ export class InputEmail extends React.Component<IInputProps, IInputEmailState> {
         this.setState({
             emailError: emailError
         });
+        return emailError;
     }
 
     componentWillReceiveProps(props: any) {
@@ -118,7 +123,7 @@ export class InputEmail extends React.Component<IInputProps, IInputEmailState> {
 
 interface IInputProps {
     handleInputChange: (inputName: any, inputValue: any,inputErrorName: any, inputErrorValue: any) => void;
-    // clearedState: IFormProps;
+    parentCurrentState: IFormProps;
 }
 
 interface IInputEmailState {
