@@ -1,0 +1,50 @@
+body {
+    background-color: rgb(116, 92, 83);
+    font-family: 'Roboto';
+}
+
+/* NAV ======================================= */
+.nav {
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    width: 100vw;
+    height: 100px;
+}
+
+.logo {
+    margin: 0 40px;
+    color: #eee;
+}
+
+/* GROUP & INPUTS ======================================= */
+.cont {
+    display: flex;
+    justify-content: center;
+}
+
+.form-card {
+    width: 26em;
+    height: 34em;
+
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    background-color: #eee;
+    border-radius: 10px;
+}
+
+.card-title {
+    text-align: center;
+    font-weight: 300;
+}
+
+.card-title span {
+    font-weight: 450;
+}
+
+.card-title .coffee-title {
+    color:rgb(112, 72, 39);
+    font-weight: 600;
+}

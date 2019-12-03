@@ -1,0 +1,114 @@
+/* GROUP & INPUTS ======================================= */
+.group 			  { 
+  position:relative; 
+  margin-bottom:45px; 
+}
+input 				{
+  font-size:14px;
+  padding:10px 0;
+  display:block;
+  width:300px;
+  border:none;
+  border-bottom:1px solid #757575aa;
+
+  background-color: transparent;
+}
+input:focus 		{ outline:none; }
+
+/* LABEL ======================================= */
+label 				 {
+  color:#999; 
+  font-size:14px;
+  font-weight:normal;
+  position:absolute;
+  pointer-events:none;
+  left:5px;
+  top:10px;
+  transition:0.3s ease all; 
+  -moz-transition:0.3s ease all; 
+  -webkit-transition:0.3s ease all;
+}
+
+/* active state */
+input:focus ~ label, input:valid ~ label {
+  top:-20px;
+  font-size:12px;
+  font-weight: 500;
+  color:#855b2e;
+}
+
+/* BOTTOM BARS ================================= */
+.bar 	{ position:relative; display:block; width:300px; }
+.bar:before, .bar:after 	{
+  content:'';
+  height:2px; 
+  width:0;
+  bottom:1px; 
+  position:absolute;
+  background:#855b2e; 
+  transition:0.3s ease all; 
+  -moz-transition:0.3s ease all; 
+  -webkit-transition:0.3s ease all;
+}
+.bar:before {
+  left:50%;
+}
+.bar:after {
+  right:50%; 
+}
+
+/* active state */
+input:focus ~ .bar:before, input:focus ~ .bar:after {
+  width:50%;
+}
+
+/* ERRORS ================ */
+.input-error {
+  color: rgb(235, 55, 0);
+  font-size: 14px;
+  margin-left: 0.5em;
+}
+
+.group-error input ~ label {
+  top:-20px;
+  font-size:12px;
+  font-weight: 500;
+  color:rgb(235, 55, 0);
+}
+
+.group-error input {
+  border-bottom:2px solid rgb(235, 55, 0);
+}
+
+.group-error input:focus {
+  border-bottom:1px solid #757575aa;
+}
+
+/* PASSWORD TIPS ================ */
+.input-tip {
+  color: rgb(235, 145, 0);
+  font-size: 14px;
+  margin-left: 0.5em;
+}
+
+.group-tip input ~ label {
+  top:-20px;
+  font-size:12px;
+  font-weight: 500;
+  color:rgb(235, 145, 0);
+}
+
+.group-tip input {
+  border-bottom:2px solid rgb(235, 145, 0);
+}
+
+.group-tip input:focus {
+  border-bottom:1px solid #757575aa;
+}
+
+
+/* ESTO DE AQUÍ DEBERÍA DE QUITARLO */
+.tarjetita {
+    /* background-color:#fff2e6; */
+    border: none;
+}

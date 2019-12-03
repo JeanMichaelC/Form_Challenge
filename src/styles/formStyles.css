@@ -1,0 +1,44 @@
+/* CARD ======================================= */
+/* .my-card {
+    width: 400px;
+    height: auto;
+
+    padding: 2em;
+
+    display: flex;
+    justify-content: center;
+
+    background-color: #eee;
+} */
+
+/* FORM ======================================= */
+.flexito {
+    display: flex;
+    justify-content: center;
+}
+
+.form {
+ padding: 30px;
+ width: 300px;
+}
+
+/* CTA ======================================= */
+.cta {
+    background-color: rgb(116, 92, 83);
+    color: #eee;
+    border-radius: 10px;
+    box-shadow: 0 8px 10px rgba(46, 33, 28, 0.5);
+    transition:0.2s ease all; 
+    -moz-transition:0.2s ease all; 
+    -webkit-transition:0.2s ease all;
+}
+.cta:hover {
+    background-color: rgb(109, 85, 77);
+    box-shadow: 1px 9px 11px rgba(46, 33, 28, 0.5);
+}
+
+.cta:active {
+    background-color: rgb(116, 92, 83);
+    box-shadow: 0 4px 8px rgba(46, 33, 28, 0.5);
+    transform: scale(0.98);
+}
